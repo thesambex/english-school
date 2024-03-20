@@ -43,8 +43,7 @@ public class TeachersControllerV1Test {
                         .characterEncoding("UTF-8")
                         .content(new ObjectMapper().writeValueAsBytes(person))
                 ).andDo(print())
-                .andExpect(status().isCreated())
-                .andReturn();
+                .andExpect(status().isCreated());
     }
 
 }
