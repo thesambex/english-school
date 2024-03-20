@@ -39,7 +39,7 @@ public class TeachersServiceV1Impl implements TeachersServiceV1 {
             Person person = new Person();
             BeanUtils.copyProperties(body, person);
             person.setId(null);
-            person.setGenre(PersonGenres.fromString(body.genre()));
+            person.setGenre(PersonGenres.fromString(body.genre().toUpperCase()));
             person.setBirthdate(LocalDate.parse(body.birthdate()));
 
             peopleRepository.save(person);
@@ -58,6 +58,9 @@ public class TeachersServiceV1Impl implements TeachersServiceV1 {
             );
 
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        } catch (IllegalArgumentException e) {
+            ErrorResponseDTO response = new ErrorResponseDTO("Bad request", e.getMessage(), LocalDateTime.now());
+            return ResponseEntity.badRequest().body(response);
         } catch (Exception e) {
             log.error("Failed to create teacher: {}", e.getMessage());
             return ResponseEntity.internalServerError().build();

@@ -5,7 +5,7 @@ import java.util.Arrays;
 public enum PersonGenres {
     UNKNOWN, MALE, FEMALE;
 
-    public static PersonGenres fromString(String value) {
+    public static PersonGenres fromString(String value) throws IllegalArgumentException {
         return Arrays.stream(values())
                 .filter(e -> e.name().equals(value))
                 .findFirst()
