@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import java.util.UUID;
 
-public record CreatePersonDTO(
+public record PersonDTO(
         UUID id,
         @NotBlank(message = "provide first_name")
         @Size(max = 30, message = "first_name max length is 30 characters")
