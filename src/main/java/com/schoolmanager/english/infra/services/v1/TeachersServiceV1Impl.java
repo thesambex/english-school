@@ -1,7 +1,7 @@
 package com.schoolmanager.english.infra.services.v1;
 
 import com.schoolmanager.english.application.services.v1.TeachersServiceV1;
-import com.schoolmanager.english.domain.dtos.people.CreatePersonDTO;
+import com.schoolmanager.english.domain.dtos.people.PersonDTO;
 import com.schoolmanager.english.domain.dtos.standard.ErrorResponseDTO;
 import com.schoolmanager.english.domain.entities.course.Teacher;
 import com.schoolmanager.english.domain.entities.people.Person;
@@ -29,7 +29,7 @@ public class TeachersServiceV1Impl implements TeachersServiceV1 {
 
     @Transactional
     @Override
-    public ResponseEntity<?> createTeacher(CreatePersonDTO body) {
+    public ResponseEntity<?> createTeacher(PersonDTO body) {
         try {
             if (peopleRepository.findPersonByDocument(body.document()).isPresent()) {
                 ErrorResponseDTO response = new ErrorResponseDTO("Already exists an pearson with this document", "document", LocalDateTime.now());
@@ -48,7 +48,7 @@ public class TeachersServiceV1Impl implements TeachersServiceV1 {
             teacher.setPerson(person);
             teachersRepository.save(teacher);
 
-            CreatePersonDTO response = new CreatePersonDTO(
+            PersonDTO response = new PersonDTO(
                     teacher.getId(),
                     person.getFirstName(),
                     person.getLastName(),

@@ -3,7 +3,7 @@ package com.schoolmanager.english.controllers.v1;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.schoolmanager.english.application.services.v1.TeachersServiceV1;
 import com.schoolmanager.english.controller.v1.TeachersControllerV1;
-import com.schoolmanager.english.domain.dtos.people.CreatePersonDTO;
+import com.schoolmanager.english.domain.dtos.people.PersonDTO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -35,7 +35,7 @@ public class TeachersControllerV1Test {
     @Test
     void createTeacherShouldReturnCreated() throws Exception {
         // Pick a random CPF on https://www.4devs.com.br/gerador_de_cpf
-        CreatePersonDTO person = new CreatePersonDTO(null, "Jhon", "Doe", "", "1990-08-01", "MALE");
+        PersonDTO person = new PersonDTO(null, "Jhon", "Doe", "", "1990-08-01", "MALE");
 
         when(teachersService.createTeacher(person)).thenReturn(ResponseEntity.status(HttpStatus.CREATED).build());
         this.mockMvc.perform(post("/api/v1/teachers/create")

@@ -1,7 +1,7 @@
 package com.schoolmanager.english.controller.v1;
 
 import com.schoolmanager.english.application.services.v1.TeachersServiceV1;
-import com.schoolmanager.english.domain.dtos.people.CreatePersonDTO;
+import com.schoolmanager.english.domain.dtos.people.PersonDTO;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ public class TeachersControllerV1 {
     private final TeachersServiceV1 teachersService;
 
     @PostMapping("/create")
-    public ResponseEntity<?> createTeacher(@Valid @RequestBody CreatePersonDTO body) {
+    public ResponseEntity<?> createTeacher(@Valid @RequestBody PersonDTO body) {
         return teachersService.createTeacher(body);
     }
 
