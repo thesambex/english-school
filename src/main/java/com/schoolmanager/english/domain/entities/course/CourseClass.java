@@ -43,13 +43,19 @@ public class CourseClass implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(columnDefinition = "teacher_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_teacher_id"))
+    @JoinColumn(name = "teacher_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_teacher_id"))
     private Teacher teacher;
+
+    @Column(name = "teacher_id", insertable = false, updatable = false)
+    private UUID teacherId;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(columnDefinition = "course_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_course_id"))
+    @JoinColumn(name = "course_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_course_id"))
     private Course course;
+
+    @Column(name = "course_id", insertable = false, updatable = false)
+    private UUID courseId;
 
     @OneToMany(mappedBy = "courseClass")
     private Collection<StudentClass> studentsClasses;

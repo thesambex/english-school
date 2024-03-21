@@ -29,7 +29,7 @@ public class Student implements Serializable {
 
     @Setter
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(columnDefinition = "person_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_person_id"))
+    @JoinColumn(name = "person_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_person_id"))
     private Person person;
 
     @OneToMany(mappedBy = "student")

@@ -25,12 +25,12 @@ public class StudentClass implements Serializable {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(columnDefinition = "student_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_student_id"))
+    @JoinColumn(name = "student_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_student_id"))
     private Student student;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(columnDefinition = "class_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_class_id"))
+    @JoinColumn(name = "class_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_class_id"))
     private CourseClass courseClass;
 
 }

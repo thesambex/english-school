@@ -31,7 +31,7 @@ public class PersonContactInfo implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(columnDefinition = "person_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_person_id"))
+    @JoinColumn(name = "person_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "FK_person_id"))
     private Person person;
 
 }
