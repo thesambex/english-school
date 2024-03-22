@@ -47,7 +47,7 @@ public class StudentsServiceV1Impl implements StudentsServiceV1 {
             studentsRepository.save(student);
 
             PersonDTO response = new PersonDTO(
-                    person.getId(),
+                    student.getId(),
                     person.getFirstName(),
                     person.getLastName(),
                     person.getDocument(),
